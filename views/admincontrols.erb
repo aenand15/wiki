@@ -1,0 +1,30 @@
+<% if false %>
+Admin controls page with list of each user and if they have edit privilege as well as their password
+Admin can delete a user, change their edit privilege, check the log file, open the archive of previous files,
+or archive the current file
+Done by Alexander
+<% end %>
+<h2>Admin controls page</h2>
+<p><b>User list</b></p><br>
+
+<% @list2.each do |liste| %>
+    <article>
+        <p>
+            Username: <%= liste.username %> Date Joined: <%= liste.date_joined %> Edit Privilege: <%= liste.edit %> Password: <%= liste.password %>
+            <form action="/user/<%= liste.username %>" method="post" id="edit">
+            <input type="hidden" name="_method" value="put">
+            <input type="checkbox" name="edit" <%= "checked" if liste.edit %>>
+            <input type="submit" value="Allow Edit?">
+            </form> 
+            <a href="/user/delete/<%= liste.username %>">Delete User?</a>
+        </p>
+    </article>
+<% end %> 
+<p><b>Add User?</b><a href='/createaccount'Add User?</a></p>
+<p><b>Create new account</b></p>
+<a href='/log' Log File</a>
+<p><b>Log File</b></p>
+<a href='/archive' Archive</a>
+<p><b>Archive</b></p>
+<a href='/archivefile' Archive file</a>
+<p><b>Save current wiki</b></p>

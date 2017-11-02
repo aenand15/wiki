@@ -1,0 +1,22 @@
+<% if false %>
+Home screen featuring the wiki content, word count, and character count with html styling
+Done by Alexander
+<% end %>
+<div id="content">
+<p>Number of words: <%= @words %> Number of characters: <%= @chars %></p>
+<p> Created by <strong>Alexander Soyoye</strong> And <strong>Amit Enand</strong></p>
+</div>
+<div class="row">
+<div class="jumbotron text-center">
+<p>Welcome to Aberdream News. Your Daily News source for all the current events happening in Aberdeen</p>
+<p>Feel free to read our daily news articles and create some if you like!</p>
+
+</div>
+</div>
+<div class="second col-md-4 ml-md-auto">
+    <div class="panel panel-primary">
+         <div class="panel-heading"><%= @infoheader %></div>
+        <div class="panel-body">
+    <textarea readonly rows= "20" cols = "46"><%= @info %></textarea></div>
+</div>
+</div>

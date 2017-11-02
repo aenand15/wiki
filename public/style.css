@@ -1,0 +1,9 @@
+.second{
+    width:40%;
+    height:200px;
+	position: relative;
+}
+
+body {
+    background-color: lightblue;
+}

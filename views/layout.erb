@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<% if false %>
+Main layout of the site that all other views employ
+features masthead as well as controls for the navbar
+The navbar contains logic to check what to be on navbar regarding if there is  a 
+logged in user and if that user is an admin
+Done by Alexander
+<% end %>
+<html>
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="Find out what is going on today in our city-Aberdeen" />
+        <meta name="keywords" content="wiki, News,today"/>
+        <link rel="stylesheet" href="/Assignment/public/style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Aberdream News</title>
+    
+    <style>
+  .bg { 
+       background-color: lightblue;
+        
+    }
+    
+    
+  </style>
+  
+</head>
+<body class="bg">
+<div class="main_container">
+    <header>
+    <div class="jumbotron text-center">
+            <h1>News<span style="color:red;"><em>Today</em></span></h1><br>
+            <i class="fa fa-newspaper-o fa-spin fa-5x" aria-hidden="true"></i>
+        </div>
+        
+        <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"><strong><span style="color:red;"><em>Aberdream</em></span> News</strong></a>
+    </div>
+    <ul class="nav navbar-nav">
+   <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+            <li><a href="/about"><i class="fa fa-info-circle" aria-hidden="true"></i>About</a></li>
+            <% if $credentials %>
+                <% if $credentials[0] != ' ' %>
+                    <li><a href="/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a></li>
+                   <li><a href="/user/<%= $credentials[0] %>"><i class="fa fa-user-circle-o" aria-hidden="true"></i><%= $credentials[0]
+            %></a></li>
+                    <% if $credentials[0] == "Admin" %>
+                        <li><a href="/admincontrols"><i class="fa fa-user-secret" aria-hidden="true"></i>Admin Controls</a></li>
+                    <% end %>
+                    <li><a href="/logout"><i class="fa fa-user-o" aria-hidden="true"></i>Logout</a></li>
+                <% else %>
+                    <li><a href="/login"><i class="fa fa-user-o" aria-hidden="true"></i>Login</a></li>
+                <% end %>
+            <% else %>
+                <li><a href="/login"><i class="fa fa-user-o" aria-hidden="true"></i>Login</a></li>
+            <% end %>
+            </ul>
+  </div>
+</nav>
+
+        
+    </header>
+    
+     <div class="view_content">
+       <p><%= yield %></p>
+      
+   </div>
+    </div>
+ 
+</body>
+</html>
